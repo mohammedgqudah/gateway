@@ -9,6 +9,7 @@ psycopg2-binary==2.8.2
 
 python-dotenv==0.18.0
 requests==2.23.0
+httpx==0.18.2
 
 bcrypt==3.2.0
 PyJWT==1.7.1

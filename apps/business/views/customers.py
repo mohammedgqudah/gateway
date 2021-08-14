@@ -9,17 +9,17 @@ router = APIRouter()
 
 
 @router.get('/')
-def list_staff(request: Request, business=Depends(get_business)):
+async def list_customers(request: Request, business=Depends(get_business)):
     broker = CustomersBroker(request)
 
-    return broker.list_customers(business_id=business.id, params=request.query_params)
+    return await broker.list_customers(business_id=business.id, params=request.query_params)
 
 
 @router.get('/{customer_id}')
-def get_staff_member(request: Request, customer_id: UUID4, business=Depends(get_business)):
+async def get_customers(request: Request, customer_id: UUID4, business=Depends(get_business)):
     broker = CustomersBroker(request)
 
-    return broker.get_customer(
+    return await broker.get_customer(
         business_id=business.id,
         customer_id=customer_id,
         params=request.query_params

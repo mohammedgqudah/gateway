@@ -1,14 +1,11 @@
 from datetime import datetime
-from requests.exceptions import Timeout, RequestException
-from urllib.error import URLError
 
 import jwt
-import requests
+import httpx
 
 from fastapi import Request, HTTPException, Response
 from fastapi_basis.server import status
-from sentry_sdk import capture_exception, capture_event, capture_message
-from sentry_sdk.scope import Scope
+from sentry_sdk import capture_message, push_scope
 
 from core.config import SERVICES
 
@@ -83,11 +80,14 @@ class Broker:
         return url
 
     def capture_exception(self, *args, **kwargs):
-        scope = Scope()
-        scope.set_extra("token_payload", self.token_payload)
-        capture_message(*args, **kwargs, scope=scope)
+        with push_scope() as scope:
+            scope.set_tag("broker", self.alias)
+            scope.set_extra("token_payload", self.token_payload)
+            if hasattr(args[0], 'request'):
+                scope.set_extra("request", args[0].request)
+            capture_message(*args, **kwargs, scope=scope)
 
-    def make_request(self, method, url, timeout=None, headers=None, **kwargs):
+    async def make_request(self, method, url, timeout=None, headers=None, **kwargs):
         timeout = timeout or self.timeout
         headers = headers or {}
         kwargs.update({
@@ -95,22 +95,24 @@ class Broker:
         })
 
         try:
-            response = requests.request(method=method, url=url, timeout=timeout, **kwargs)
-            status_code = response.status_code
-            content_type = response.headers.get("content-type", None)
-            if status.is_server_error(status_code):
-                raise SERVICE_UNAVAILABLE
+            async with httpx.AsyncClient() as client:
+                response = await client.request(method=method, url=url, timeout=timeout, **kwargs)
+                status_code = response.status_code
+                content_type = response.headers.get("content-type", None)
+                if status.is_server_error(status_code):
+                    raise SERVICE_UNAVAILABLE
 
-            return Response(
-                content=response.content,
-                status_code=status_code,
-                media_type=content_type
-            )
+                return Response(
+                    content=response.content,
+                    status_code=status_code,
+                    media_type=content_type
+                )
 
-        except Timeout as e:
+        except httpx.TimeoutException as e:
             self.capture_exception(e)
             raise SERVICE_TIMEOUT
-        except (RequestException, URLError) as e:
+        except (httpx.RequestError, httpx.InvalidURL) as e:
+            print(e)
             self.capture_exception(e)
             raise SERVICE_UNAVAILABLE
 
