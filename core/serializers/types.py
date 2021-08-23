@@ -1,2 +1,2 @@
-from fastapi_basis.serializers.types import *
+from fastapi_baseplate.serializers.types import *
 

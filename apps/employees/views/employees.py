@@ -1,8 +1,8 @@
 from fastapi import status, Depends
-from fastapi_basis.server.response import http_response
-from fastapi_basis.clients.sqlalchemy.depends import with_session
-from fastapi_basis.server.views import ListView
-from fastapi_basis.serializers import UUID4
+from fastapi_baseplate.server.response import http_response
+from fastapi_baseplate.clients.sqlalchemy.depends import with_session
+from fastapi_baseplate.server.views import ListView
+from fastapi_baseplate.serializers import UUID4
 from sqlalchemy.orm import Session
 
 from core.router import APIRouter

@@ -34,3 +34,21 @@ class CustomersBroker(Broker):
             params=params,
             **kwargs
         )
+
+    async def create_customer(self, business_id: str, params, **kwargs):
+        url = self.make_url('business', business_id, 'customers')
+        return await self.make_request(
+            method='POST',
+            url=url,
+            params=params,
+            **kwargs
+        )
+
+    async def update_customer(self, business_id: str, customer_id: str, params, **kwargs):
+        url = self.make_url('business', business_id, 'customers', customer_id)
+        return await self.make_request(
+            method='PUT',
+            url=url,
+            params=params,
+            **kwargs
+        )

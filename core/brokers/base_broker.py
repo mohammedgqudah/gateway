@@ -4,7 +4,7 @@ import jwt
 import httpx
 
 from fastapi import Request, HTTPException, Response
-from fastapi_basis.server import status
+from fastapi_baseplate.server import status
 from sentry_sdk import capture_message, push_scope
 
 from core.config import SERVICES

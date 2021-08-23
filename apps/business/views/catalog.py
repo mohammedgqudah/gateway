@@ -1,5 +1,5 @@
 from fastapi import Depends, Request
-from fastapi_basis.serializers import ObjectId
+from fastapi_baseplate.serializers import ObjectId
 
 from core.router import APIRouter
 from core.depends import get_business

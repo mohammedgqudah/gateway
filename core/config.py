@@ -1,7 +1,7 @@
 from datetime import timedelta
 
-from fastapi_basis.conf.defaults import *
-from fastapi_basis.clients.sqlalchemy import create_engine, BaseQuery
+from fastapi_baseplate.conf.defaults import *
+from fastapi_baseplate.clients.sqlalchemy import create_engine, BaseQuery
 from sqlalchemy.orm import sessionmaker as _sessionmaker
 
 from .env import environment

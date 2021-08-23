@@ -1,5 +1,5 @@
 from fastapi import status, Depends, Request
-from fastapi_basis.server.response import http_response
+from fastapi_baseplate.server.response import http_response
 
 from core.router import APIRouter
 from core.depends import get_business

@@ -1,4 +1,4 @@
-from fastapi_basis.server.authentication import BaseAuthentication
+from fastapi_baseplate.server.authentication import BaseAuthentication
 
 from .env import environment
 

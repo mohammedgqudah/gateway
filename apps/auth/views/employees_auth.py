@@ -1,6 +1,6 @@
 from fastapi import status, Depends
-from fastapi_basis.server.response import http_response
-from fastapi_basis.clients.sqlalchemy.depends import get_db_session
+from fastapi_baseplate.server.response import http_response
+from fastapi_baseplate.clients.sqlalchemy.depends import get_db_session
 
 from core.router import APIRouter
 from apps.employees.models.operations.employee import get_employee_by_email, employee_login
