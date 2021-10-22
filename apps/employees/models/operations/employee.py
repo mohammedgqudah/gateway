@@ -7,7 +7,7 @@ from ..employee import Employee
 
 EMPLOYEE_NOT_FOUND = HTTPException(
     status_code=status.HTTP_404_NOT_FOUND,
-    detail="An employee with this email doesn't exist"
+    detail="An employee with this email does not exist"
 )
 
 INCORRECT_PASSWORD = HTTPException(
@@ -26,7 +26,11 @@ def check_password(raw_password: str, hashed_password: str) -> bool:
 
 def get_employee_by_email(session: orm.Session, sub_domain, email):
     try:
-        return session.query(Employee).filter_by(sub_domain=sub_domain, email=email).one()
+        return (
+            session.query(Employee.id, Employee.sub_domain, Employee.password)
+            .filter_by(sub_domain=sub_domain, email=email)
+            .one()
+        )
     except orm.exc.NoResultFound:
         raise EMPLOYEE_NOT_FOUND
 

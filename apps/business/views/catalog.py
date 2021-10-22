@@ -27,6 +27,18 @@ async def get_product(request: Request, product_id: ObjectId, business=Depends(g
     )
 
 
+@router.put('/products/{product_id}')
+async def update_product(product_id: ObjectId, request: Request, business=Depends(get_business)):
+    broker = CatalogBroker(request)
+
+    return await broker.update_product(
+        business_id=business.id,
+        product_id=product_id,
+        params=request.query_params,
+        json=await request.json()
+    )
+
+
 @router.post('/products')
 async def create_product(request: Request, business=Depends(get_business)):
     broker = CatalogBroker(request)

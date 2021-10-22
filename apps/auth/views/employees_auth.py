@@ -4,7 +4,7 @@ from fastapi_baseplate.clients.sqlalchemy.depends import get_db_session
 
 from core.router import APIRouter
 from apps.employees.models.operations.employee import get_employee_by_email, employee_login
-from ..serializers import LoginData
+from ..serializers import LoginCredentials
 
 router = APIRouter()
 
@@ -12,7 +12,7 @@ router = APIRouter()
 @router.post(
     '/login'
 )
-def login(credentials: LoginData, session=Depends(get_db_session())):
+def login(credentials: LoginCredentials, session=Depends(get_db_session())):
     """Login as a business employee."""
     employee = get_employee_by_email(
         session=session,

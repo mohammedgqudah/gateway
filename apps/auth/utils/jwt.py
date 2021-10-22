@@ -9,6 +9,7 @@ from core.env import environment
 
 def get_access_refresh_token(session, payload) -> Tuple[str, str]:
     """Generate access_token & refresh token.
+
     access tokens are stateless JWTs
     refresh tokens are stored in the database
     """

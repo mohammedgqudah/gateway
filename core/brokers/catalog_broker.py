@@ -39,6 +39,17 @@ class CatalogBroker(Broker):
             **kwargs
         )
 
+    async def update_product(self, business_id: str, product_id: str, params, **kwargs):
+        """create product
+        """
+        url = self.make_url('business', business_id, 'products', product_id)
+        return await self.make_request(
+            method='PUT',
+            url=url,
+            params=params,
+            **kwargs
+        )
+
     async def list_available_products(self, business_id: str, channel_id: str, params, **kwargs):
         """list channel level available products
         """

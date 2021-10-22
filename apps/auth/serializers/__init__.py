@@ -1,3 +1,3 @@
-from .auth import LoginData
+from .auth import LoginCredentials
 
-__all__ = ('LoginData',)
+__all__ = ('LoginCredentials',)

@@ -117,4 +117,4 @@ class Broker:
             raise SERVICE_UNAVAILABLE
 
     def __str__(self):
-        return f"<%s: %s>" % (self.name, self.host)
+        return "<%s: %s>" % (self.name, self.host)

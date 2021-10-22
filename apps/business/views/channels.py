@@ -1,4 +1,4 @@
-from fastapi import status, Depends, Request
+from fastapi import status, Depends
 from fastapi_baseplate.server.response import http_response
 from fastapi_baseplate.clients.sqlalchemy.depends import get_db_session
 

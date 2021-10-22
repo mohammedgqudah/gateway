@@ -1,4 +1,4 @@
-from fastapi import status, Depends, Request
+from fastapi import Depends, Request
 from fastapi_baseplate.serializers import UUID4
 
 from core.router import APIRouter

@@ -1,4 +1,4 @@
-from fastapi import status, Depends, Request
+from fastapi import status, Depends
 from fastapi_baseplate.server.response import http_response
 
 from core.router import APIRouter
