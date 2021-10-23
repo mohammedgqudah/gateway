@@ -15,8 +15,8 @@ def get_access_refresh_token(session, payload) -> Tuple[str, str]:
     """
     now = datetime.now()
     message = {
-        'exp': now + ACCESS_TOKEN_EXP_DELTA,
-        'created_at': now.timestamp(),
+        "exp": now + ACCESS_TOKEN_EXP_DELTA,
+        "created_at": now.timestamp(),
         **payload,
     }
     access = jwt.encode(message, environment.secret_key, algorithm="HS256")

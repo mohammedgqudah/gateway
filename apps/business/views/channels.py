@@ -11,14 +11,9 @@ from apps.channel.serializers import ChannelOut
 router = APIRouter()
 
 
-@router.get('/')
+@router.get("/")
 def list_channels(business=Depends(get_business), session=Depends(get_db_session())):
-    channels = session.query(Channel).filter_by(
-        business_id=business.id,
-    )
+    channels = session.query(Channel).filter_by(business_id=business.id,)
     channels = [ChannelOut.from_orm(channel).json() for channel in channels]
 
-    return http_response(
-        data=channels,
-        status=status.HTTP_200_OK
-    )
+    return http_response(data=channels, status=status.HTTP_200_OK,)

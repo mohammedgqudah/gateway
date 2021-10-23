@@ -8,11 +8,11 @@ class SubDomainRef(object):
 
     @declared_attr
     def sub_domain(self):
-        return Column(ForeignKey('business.sub_domain', ondelete='CASCADE'))
+        return Column(ForeignKey("business.sub_domain", ondelete="CASCADE"))
 
     @declared_attr
     def business(self):
-        return relationship('Business', uselist=False, foreign_keys=[self.sub_domain])
+        return relationship("Business", uselist=False, foreign_keys=[self.sub_domain])
 
 
 class BusinessRef(object):
@@ -21,8 +21,8 @@ class BusinessRef(object):
 
     @declared_attr
     def business_id(self):
-        return Column(ForeignKey('business.id', ondelete='CASCADE'))
+        return Column(ForeignKey("business.id", ondelete="CASCADE"))
 
     @declared_attr
     def business(self):
-        return relationship('Business', uselist=False)
+        return relationship("Business", uselist=False)

@@ -1,3 +1,3 @@
 from .business import BusinessBase
 
-__all__ = ('BusinessBase',)
+__all__ = ("BusinessBase",)

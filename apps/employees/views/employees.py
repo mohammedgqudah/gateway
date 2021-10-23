@@ -14,26 +14,15 @@ from ..serializers import EmployeeOut, EmployeeQuery
 router = APIRouter()
 
 
-@router.get('/')
-def list_employees(
-        query: EmployeeQuery = Depends(),
-        business=Depends(get_business),
-        session=Depends(with_session)
-):
+@router.get("/")
+def list_employees(query: EmployeeQuery = Depends(), business=Depends(get_business), session=Depends(with_session)):
     employees = session.query(Employee).filter_by(sub_domain=business.sub_domain)
 
     return ListView(employees, EmployeeOut)(query)
 
 
-@router.get('/{employee_id}')
-def get_employee(
-        employee_id: UUID4,
-        business=Depends(get_business),
-        session: Session = Depends(with_session)
-):
+@router.get("/{employee_id}")
+def get_employee(employee_id: UUID4, business=Depends(get_business), session: Session = Depends(with_session)):
     employee = session.query(Employee).filter_by(sub_domain=business.sub_domain, id=employee_id).one()
 
-    return http_response(
-        data=EmployeeOut.from_orm(employee),
-        status=status.HTTP_200_OK
-    )
+    return http_response(data=EmployeeOut.from_orm(employee), status=status.HTTP_200_OK)
