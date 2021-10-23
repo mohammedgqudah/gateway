@@ -2,8 +2,8 @@ from fastapi import Depends, status
 from fastapi_baseplate.clients.sqlalchemy.depends import get_db_session
 from fastapi_baseplate.server.response import http_response
 
-from apps.employees.models.operations.employee import employee_login, get_employee_by_email
 from core.router import APIRouter
+from apps.employees.models.operations.employee import employee_login, get_employee_by_email
 
 from ..serializers import LoginCredentials
 
