@@ -1,4 +1,4 @@
-from fastapi_basis.serializers.fields import *
+from fastapi_baseplate.serializers.fields import *
 
 
 SubDomainField = SlugField

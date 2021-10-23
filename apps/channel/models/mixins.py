@@ -8,8 +8,8 @@ class ChannelRef(object):
 
     @declared_attr
     def channel_id(self):
-        return Column(ForeignKey('channel.id', ondelete='CASCADE'))
+        return Column(ForeignKey("channel.id", ondelete="CASCADE"))
 
     @declared_attr
     def channel(self):
-        return relationship('Channel', uselist=False)
+        return relationship("Channel", uselist=False)

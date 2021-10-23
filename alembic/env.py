@@ -16,7 +16,7 @@ config = context.config
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 # set endpoint from config
-config.set_main_option('sqlalchemy.url', environment.postgres_dsn)
+config.set_main_option("sqlalchemy.url", environment.postgres_dsn)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
@@ -25,11 +25,11 @@ config.set_main_option('sqlalchemy.url', environment.postgres_dsn)
 
 target_metadata = []
 for app in ACTIVE_APPS:
-    i = importlib.import_module('apps.{}.models'.format(app))
+    i = importlib.import_module("apps.{}.models".format(app))
 
     if len(target_metadata) > 0:
         continue
-    elif hasattr(i, '__all__') and len(i.__all__) > 0:
+    elif hasattr(i, "__all__") and len(i.__all__) > 0:
         model = i.__all__[0]
         target_metadata.append(getattr(i, model).metadata)
 
@@ -56,9 +56,7 @@ def run_migrations_offline():
 
     """
     url = config.get_main_option("sqlalchemy.url")
-    context.configure(
-        url=url, target_metadata=target_metadata, literal_binds=True
-    )
+    context.configure(url=url, target_metadata=target_metadata, literal_binds=True)
 
     with context.begin_transaction():
         context.run_migrations()
@@ -72,15 +70,11 @@ def run_migrations_online():
 
     """
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section),
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
+        config.get_section(config.config_ini_section), prefix="sqlalchemy.", poolclass=pool.NullPool,
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

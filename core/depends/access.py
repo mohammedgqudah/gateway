@@ -1,4 +1,4 @@
-from fastapi_basis.server.authentication import CheckAccessToken as FastAPIBasisCheckAccessToken
+from fastapi_baseplate.server.authentication import CheckAccessToken as FastAPIBasisCheckAccessToken
 
 
 class CheckAccessToken(FastAPIBasisCheckAccessToken):

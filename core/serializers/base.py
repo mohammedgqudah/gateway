@@ -8,7 +8,7 @@ from pydantic import BaseModel as PBaseModel, BaseConfig as PBaseConfig
 class BaseConfig(PBaseConfig):
     json_encoders = {
         datetime: lambda dt: dt.isoformat(),
-        UUID: str
+        UUID: str,
     }
 
 
