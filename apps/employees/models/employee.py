@@ -1,6 +1,5 @@
 from sqlalchemy import Boolean, Column, String, UniqueConstraint
 from sqlalchemy.orm import column_property
-
 from core.db import Base
 from apps.business.models import SubDomainRef
 
