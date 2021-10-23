@@ -1,9 +1,6 @@
 name: Flake8 Linting
 
-on:
-  push:
-    paths:
-      - '*.py'
+on: [pull_request]
 
 jobs:
   lint:
