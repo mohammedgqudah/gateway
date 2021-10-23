@@ -3,8 +3,7 @@ from sqlalchemy.orm import declared_attr, relationship
 
 
 class SubDomainRef(object):
-    """Add business reference to mapper using `business.sub_domain`
-    """
+    """Add business reference to mapper using `business.sub_domain`"""
 
     @declared_attr
     def sub_domain(self):
@@ -16,8 +15,7 @@ class SubDomainRef(object):
 
 
 class BusinessRef(object):
-    """Add business reference to mapper using `business.id`
-    """
+    """Add business reference to mapper using `business.id`"""
 
     @declared_attr
     def business_id(self):
