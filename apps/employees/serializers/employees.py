@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
+from fastapi_baseplate.query.postgres import BasePaginationQuery, BaseQuery
 from pydantic import EmailStr
-from fastapi_baseplate.query.postgres import BaseQuery, BasePaginationQuery
 
 from core.serializers import BaseModel
 

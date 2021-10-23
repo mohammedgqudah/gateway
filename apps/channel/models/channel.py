@@ -1,7 +1,7 @@
-from sqlalchemy import Column, String, Boolean, Integer, UniqueConstraint
+from sqlalchemy import Boolean, Column, Integer, String, UniqueConstraint
 
-from core.db import Base
 from apps.business.models import BusinessRef
+from core.db import Base
 
 
 class Channel(Base, BusinessRef):

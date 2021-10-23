@@ -1,12 +1,12 @@
 from fastapi import Depends
 
-from core.router import APIRouter
 from core.depends import CheckAccessToken
+from core.router import APIRouter
 
 from .business import router as business_router
+from .catalog import router as catalog_router
 from .channels import router as channels_router
 from .customers import router as customers_router
-from .catalog import router as catalog_router
 
 router = APIRouter(prefix="/business", dependencies=[Depends(CheckAccessToken())])
 

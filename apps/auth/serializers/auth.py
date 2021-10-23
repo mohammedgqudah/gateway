@@ -1,4 +1,4 @@
-from pydantic import Field, EmailStr
+from pydantic import EmailStr, Field
 
 from core.serializers import BaseModel
 from core.serializers.fields import SubDomainField

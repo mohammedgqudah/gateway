@@ -1,8 +1,8 @@
-from fastapi import status, Depends
+from fastapi import Depends, status
 from fastapi_baseplate.server.response import http_response
 
-from core.router import APIRouter
 from core.depends import get_business
+from core.router import APIRouter
 
 from ..serializers import BusinessBase
 

@@ -1,6 +1,7 @@
 from enum import Enum
 
 from fastapi_baseplate.serializers import UUID4
+
 from core.serializers import BaseModel
 
 from ..models import Channel

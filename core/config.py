@@ -1,11 +1,11 @@
 from datetime import timedelta
 
+from fastapi_baseplate.clients.sqlalchemy import BaseQuery, create_engine
 from fastapi_baseplate.conf.defaults import *  # noqa
-from fastapi_baseplate.clients.sqlalchemy import create_engine, BaseQuery
 from sqlalchemy.orm import sessionmaker as _sessionmaker
 
-from .env import environment
 from .authentication import JWTAuthHandler
+from .env import environment
 
 SECRET_KEY = environment.secret_key
 

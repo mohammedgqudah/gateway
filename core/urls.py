@@ -1,8 +1,8 @@
-from .router import APIRouter
-
 from apps.auth.views import router as auth_router
 from apps.business.views import router as business_router
 from apps.channel.views import router as channel_router
+
+from .router import APIRouter
 
 router = APIRouter(prefix="/api/v1")
 

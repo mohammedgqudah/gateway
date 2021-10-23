@@ -1,6 +1,6 @@
 from enum import Enum
 
-from pydantic import BaseSettings, PositiveInt, Field
+from pydantic import BaseSettings, Field, PositiveInt
 
 
 class APIEnv(str, Enum):
