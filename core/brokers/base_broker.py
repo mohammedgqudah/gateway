@@ -1,9 +1,8 @@
 from datetime import datetime
 
-import jwt
 import httpx
-
-from fastapi import Request, HTTPException, Response
+import jwt
+from fastapi import HTTPException, Request, Response
 from fastapi_baseplate.server import status
 from sentry_sdk import capture_message, push_scope
 

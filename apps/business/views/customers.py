@@ -1,9 +1,9 @@
 from fastapi import Depends, Request
 from fastapi_baseplate.serializers import UUID4
 
-from core.router import APIRouter
-from core.depends import get_business
 from core.brokers import CustomersBroker
+from core.depends import get_business
+from core.router import APIRouter
 
 router = APIRouter()
 
@@ -19,7 +19,11 @@ async def list_customers(request: Request, business=Depends(get_business)):
 async def get_customers(request: Request, customer_id: UUID4, business=Depends(get_business)):
     broker = CustomersBroker(request)
 
-    return await broker.get_customer(business_id=business.id, customer_id=customer_id, params=request.query_params,)
+    return await broker.get_customer(
+        business_id=business.id,
+        customer_id=customer_id,
+        params=request.query_params,
+    )
 
 
 @router.post("/")
@@ -29,7 +33,10 @@ async def create_customer(request: Request, business=Depends(get_business)):
     return await broker.create_customer(
         business_id=business.id,
         params=request.query_params,
-        json={**await request.json(), "sub_domain": business.sub_domain,},
+        json={
+            **await request.json(),
+            "sub_domain": business.sub_domain,
+        },
     )
 
 
@@ -41,5 +48,8 @@ async def update_customer(request: Request, customer_id: UUID4, business=Depends
         business_id=business.id,
         customer_id=customer_id,
         params=request.query_params,
-        json={**await request.json(), "sub_domain": business.sub_domain,},
+        json={
+            **await request.json(),
+            "sub_domain": business.sub_domain,
+        },
     )

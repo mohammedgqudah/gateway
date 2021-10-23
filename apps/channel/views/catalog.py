@@ -1,9 +1,9 @@
 from fastapi import Depends, Request
 from fastapi_baseplate.serializers import UUID4
 
-from core.router import APIRouter
-from core.depends import get_business
 from core.brokers import CatalogBroker
+from core.depends import get_business
+from core.router import APIRouter
 from core.serializers.types import ObjectId
 
 router = APIRouter()

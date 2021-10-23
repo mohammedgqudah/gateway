@@ -6,3 +6,8 @@ extend-exclude = '''
   | alembic
 )/
 '''
+
+[tool.isort]
+profile = "black"
+src_paths = ["core", "apps"]
+line_length = 120

@@ -1,5 +1,6 @@
 from enum import Enum
-from pydantic import BaseSettings, PositiveInt, Field
+
+from pydantic import BaseSettings, Field, PositiveInt
 
 
 class APIEnv(str, Enum):
@@ -46,8 +47,14 @@ class Settings(BaseSettings):
     @property
     def services(self) -> dict:
         return {
-            "customers": {"host": self.customers_host, "key": self.customers_key,},
-            "catalog": {"host": self.catalog_host, "key": self.catalog_key,},
+            "customers": {
+                "host": self.customers_host,
+                "key": self.customers_key,
+            },
+            "catalog": {
+                "host": self.catalog_host,
+                "key": self.catalog_key,
+            },
         }
 
     class Config:

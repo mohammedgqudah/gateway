@@ -1,7 +1,8 @@
 from enum import Enum
-from core.serializers import BaseModel
 
+from core.serializers import BaseModel
 from core.serializers.fields import SubDomainField
+
 from ..models import Business
 
 

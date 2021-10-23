@@ -1,7 +1,7 @@
 from fastapi import Depends
 
-from core.router import APIRouter
 from core.depends import CheckAccessToken
+from core.router import APIRouter
 
 from .staff import router as staff_router
 

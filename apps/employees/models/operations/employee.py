@@ -1,8 +1,9 @@
 import bcrypt
+from fastapi import HTTPException, status
 from sqlalchemy import orm
-from fastapi import status, HTTPException
 
 from apps.auth.utils import get_access_refresh_token
+
 from ..employee import Employee
 
 EMPLOYEE_NOT_FOUND = HTTPException(

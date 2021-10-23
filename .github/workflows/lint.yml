@@ -1,19 +1,37 @@
 name: flake8 Lint
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - develop
+      - master
+  pull_request:
+    branches:
+      - develop
+      - master
+
 
 jobs:
-  flake8-lint:
+  run-linters:
+    name: Run linters
     runs-on: ubuntu-latest
-    name: Lint
+
     steps:
-      - name: Check out source repository
+      - name: Check out Git repository
         uses: actions/checkout@v2
+
       - name: Set up Python environment
         uses: actions/setup-python@v2
         with:
           python-version: "3.8"
-      - name: flake8 Lint
-        uses: reviewdog/action-flake8@v3
+
+      - name: Install Python dependencies
+        run: pip install -r requirements/_development.txt
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          flake8: true
+          flake8_args: "--config=tox.ini"
+          black: true
+          black_args: "--config=pyproject.toml"

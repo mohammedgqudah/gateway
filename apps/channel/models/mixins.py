@@ -3,8 +3,7 @@ from sqlalchemy.orm import declared_attr, relationship
 
 
 class ChannelRef(object):
-    """Add channel reference to mapper using `channel.id`
-    """
+    """Add channel reference to mapper using `channel.id`"""
 
     @declared_attr
     def channel_id(self):

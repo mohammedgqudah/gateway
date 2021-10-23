@@ -2,7 +2,8 @@ from datetime import datetime
 from uuid import UUID
 
 from fastapi.encoders import jsonable_encoder
-from pydantic import BaseModel as PBaseModel, BaseConfig as PBaseConfig
+from pydantic import BaseConfig as PBaseConfig
+from pydantic import BaseModel as PBaseModel
 
 
 class BaseConfig(PBaseConfig):
