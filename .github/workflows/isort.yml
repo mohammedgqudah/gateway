@@ -27,4 +27,3 @@ jobs:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_PYTHON_ISORT: true
-          PYTHON_ISORT_CONFIG_FILE: ./pyproject.toml
